@@ -16,6 +16,14 @@ module Types
     null: false,
     description: "Return All the artist."
 
+    field :find_item, Types::ItemType, null: false do
+      argument :id, ID, required: true
+    end
+
+    field :find_artist, Types::ArtistType, null: false do
+      argument :id, ID, required: true
+    end
+
     def items
       Item.all
     end
@@ -24,12 +32,13 @@ module Types
       Artist.all
     end
 
-
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def find_item(id:)
+        Item.find(id)
     end
+
+    def find_artist(id:)
+      Artist.find(id)
+    end
+
   end
 end
