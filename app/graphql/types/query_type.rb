@@ -16,6 +16,11 @@ module Types
     null: false,
     description: "Return All the artist."
 
+    field :articles, [Types::ArticleType]
+    field :find_articles, Types::ArticleType do 
+      argument :id, ID, required: true
+    end
+
     def items
       Item.all
     end
@@ -24,6 +29,13 @@ module Types
       Artist.all
     end
 
+    def articles
+      Article.all
+    end
+
+    def find_articles(id:)
+        Article.find(id)
+    end
 
     # TODO: remove me
     field :test_field, String, null: false,
