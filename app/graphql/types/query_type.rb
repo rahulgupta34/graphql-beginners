@@ -16,6 +16,12 @@ module Types
     null: false,
     description: "Return All the artist."
 
+    field :find_student, Types::StudentType do 
+        argument :id, ID, required: true
+    end
+
+    field :errors, [String]
+
     def items
       Item.all
     end
@@ -24,12 +30,12 @@ module Types
       Artist.all
     end
 
-
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def find_student(id:)
+        @student = Student.find(id)
+      rescue ActiveRecord::RecordNotFound => e
+         { errors: e.to_s }
     end
+
+
   end
 end
