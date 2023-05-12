@@ -16,6 +16,14 @@ module Types
     null: false,
     description: "Return All the artist."
 
+    field :delete_artist, Types::ArtistType do
+      argument :id, ID, required: true
+    end
+
+    field :delete_item, Types::ItemType do 
+      argument :id, ID, required: true
+    end
+
     def items
       Item.all
     end
@@ -24,12 +32,15 @@ module Types
       Artist.all
     end
 
-
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def delete_artist(id:)
+      @artist = Artist.find(id)
+      @artist.destroy
     end
+
+    def delete_item(id:)
+      @item = Item.find(id)
+      @item.destroy
+    end
+
   end
 end
