@@ -13,9 +13,18 @@ module Mutations
     argument :image_url, String, required: true
     argument :artist_id, ID, required: true
 
+
     # TODO: define resolve method
     def resolve(id:,title:,description:,image_url:, artist_id:)
-      Item.find(id).update!(title: title, description: description, image_url: image_url, artist_id: artist_id)
+      # Item.find(id).update!(title: title, description: description, image_url: image_url, artist_id: artist_id)
+      item = Item.find(id)
+      item.update!(title: title, description: description, image_url: image_url, artist_id: artist_id)
+
+      {
+        id: item.id,
+        title: item.title
+      }
+      
     end
   end
 end
