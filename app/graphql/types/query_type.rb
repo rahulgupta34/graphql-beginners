@@ -16,6 +16,10 @@ module Types
     null: false,
     description: "Return All the artist."
 
+    field :categories, [Types::CategoryType] 
+
+    field :posts, [Types::PostType]
+
     def items
       Item.all
     end
@@ -24,6 +28,13 @@ module Types
       Artist.all
     end
 
+    def categories
+      Category.all
+    end
+
+    def posts
+      Post.all
+    end
 
     # TODO: remove me
     field :test_field, String, null: false,
