@@ -16,12 +16,18 @@ module Types
     null: false,
     description: "Return All the artist."
 
+    field :categories, [Types::CategoryType] 
+
     def items
       Item.all
     end
 
     def artists
       Artist.all
+    end
+
+    def categories
+      Category.all
     end
 
 
