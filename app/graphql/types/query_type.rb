@@ -18,6 +18,8 @@ module Types
 
     field :categories, [Types::CategoryType] 
 
+    field :posts, [Types::PostType]
+
     def items
       Item.all
     end
@@ -30,6 +32,9 @@ module Types
       Category.all
     end
 
+    def posts
+      Post.all
+    end
 
     # TODO: remove me
     field :test_field, String, null: false,

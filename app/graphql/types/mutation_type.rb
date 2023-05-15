@@ -1,5 +1,6 @@
 module Types
   class MutationType < Types::BaseObject
+    field :create_post, mutation: Mutations::CreatePost
     field :create_category, mutation: Mutations::CreateCategory
     # TODO: remove me
     field :test_field, String, null: false,
