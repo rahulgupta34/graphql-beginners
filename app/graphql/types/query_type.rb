@@ -25,11 +25,12 @@ module Types
     end
 
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    field :customers, [Types::CustomerTestInterface], null: false
+
+    def customers
+        Customer.all.order(id: :desc)
     end
+    
+
   end
 end
