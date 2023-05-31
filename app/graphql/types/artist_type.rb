@@ -15,7 +15,7 @@ module Types
     end 
 
     def count
-      Artist.count
+      object.items.count
     end
 
   end
